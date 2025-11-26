@@ -82,11 +82,13 @@
         </a>
     </div>
 
-    <div id="palaveri" style="padding-left:16px">
+    <div id="tyopaikat" style="padding-left:16px">
     </div>
 
     <script>
-        fetch('https://raw.githubusercontent.com/s7u12/JSON/refs/heads/main/palaveri.json')
+
+        fetch('http://gis.vantaa.fi/rest/tyopaikat/v1/Opetusala')
+
             .then(function (response) {
                 return response.json();
             })
@@ -96,35 +98,21 @@
             })
 
             .catch(function (error) {
-                document.getelememntbyid("palaveri").innerHTML = "<p>Tietoa ei pystytä hakemaan </p>";
+                document.getElementById("tyopaikat").innerHTML =
+                    "<p>Tietoa ei pystytä hakemaan</p>";
             })
 
         function kerro(data) {
-
             let teksti = "";
-            let lkm = 0;
 
-            teksti = "<h1>Palaveri</h1>";
+            teksti = "<h1>Vantaan kaupungin avoimia työpaikkoja</h1><p>Opetusala</p><p><ul>";
 
-            teksti = teksti + "<h3>Aihe:</h3><p>" + data.aihe + "</p>";
-
-            lkm = data.osallistujat.length;
-
-            teksti = teksti + "<h3>Osallistujia: </h3><p>" + lkm + "</p>";
-
-            teksti = teksti + "<h3>Osallistujien nimet ja tittelit:</h3><p><ul>";
-
-            for (let i = 0; i < data.osallistujat.length; i++) {
-                teksti = teksti + "<li><b>" + data.osallistujat[i].nimi + "</b> " + data.osallistujat[i].titteli + "</li>";
+            for (let i = 0; i < data.length; i++) {
+                teksti = teksti + "<li>" + data[i].tyotehtava + ", " + data[i].osoite + ", <a href='" + data[i].tyoavain + "'> " + data[i].tyoavain + "</a></li>";
             }
+            teksti = teksti + "</ul></p>";
 
-            teksti = teksti + "</ul></p><h3>Lisätiedot:</h3>";
-
-            teksti = teksti + "<p>Kokous järjestetään paikassa nimeltä " + data.paikka + "</p>";
-            teksti = teksti + "<p>Kokous alkaa " + data.alku + "</p>";
-            teksti = teksti + "<p>Kokous kestää " + data.kesto + "</p>";
-
-            document.getElementById("palaveri").innerHTML = teksti;
+            document.getElementById("tyopaikat").innerHTML = teksti;
         }
 
         function myFunction() {
@@ -136,7 +124,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>
