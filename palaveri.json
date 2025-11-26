@@ -1,0 +1,22 @@
+{
+    "aihe": "Virkistyspäivä",
+    "osallistujat": [
+        {
+            "nimi": "Pauli Siraola",
+            "titteli": "Head of Memes"
+        },
+        {
+            "nimi": "Petrus Slipknot-Virtanen",
+            "titteli": "Senior Reel Database Inspector"
+        },
+        {
+            "nimi": "Sulevi Aallonharja",
+            "titteli": "Junior Procrastination Director"
+        }
+    ],
+    "tiedot": {
+        "paikka": "VIP-room, Silja Europa",
+        "alku": "1.6.2024 klo 18:35",
+        "kesto": "22 tuntia"
+    }
+}
